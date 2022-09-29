@@ -18,29 +18,26 @@
 </head>
 <body>
 <?php
-    $start = session_start();
+    session_start();
     if (isset($_POST['login'])) {
-        
         $_SESSION["sucess"] = "Login Sucess";
         echo $_SESSION["sucess"];
-        ?>
-  <form action="" method="post">
+ ?>
+  <form action="login.php" method="post">
   
-  <a href="#login.php"><input type='submit' name='logout' value='Logout'></a>
+  <input type='submit' name='logout' value='Logout'>
 <?php } else {?>
 <?php
   
     header('Location: login.php');
     }
-    
 ?>
 </form>
 </body>
 </html>
 <?php
     if (isset($_POST['logout'])) {
-        header('Location: login.php');
-        session_destroy();
+    session_destroy();
     }
 ?>
  
