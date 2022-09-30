@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Content text file</h1>
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum repellat ad autem, sed quaerat accusantium, omnis natus modi officiis earum iure explicabo neque incidunt deserunt nam enim doloribus molestias quod!
+Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam alias soluta quis quisquam repellendus eveniet mollitia, sunt doloremque est eius provident molestiae laboriosam maxime deserunt, culpa inventore commodi! Iusto, sequi.
+Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi, voluptates iusto. Eveniet quas nam assumenda, in ab ea fugit omnis perferendis repellendus ratione atque quibusdam ipsa! Labore doloremque placeat facere?
+</body>
+</html>
