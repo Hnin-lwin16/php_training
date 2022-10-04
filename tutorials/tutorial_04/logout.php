@@ -6,38 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logout</title>
     <style>
+        form{
+            width: 55px;
+            margin: 0 auto;
+        }
         input{
-        color: #220fed;
-        background-color: #ffffff;
-        padding: 0;
-        margin: 0;
-        border: 0;
-        text-decoration: underline;
+            color: #220fed;
+            background-color: #ffffff;
+            padding: 0;
+            margin: 0;
+            border: 0;
+            text-decoration: underline;
+            text-align: center;
+        }
+        p{
+            font-size: 15px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 <?php
-    session_start();
-    if (isset($_POST['login'])) {
-        $_SESSION["sucess"] = "Login Sucess";
-        echo $_SESSION["sucess"];
- ?>
-  <form action="login.php" method="post">
-  
+    session_start(); 
+    if ($_SESSION['sucess'] == "Login Sucess") {
+        echo "<p>".$_SESSION['sucess']."</p>";
+?>
+  <form action="" method="post">
   <input type='submit' name='logout' value='Logout'>
-<?php } else {?>
-<?php
-  
-    header('Location: login.php');
+  </form>
+<?php } else {
+        header('Location: index.php');
     }
 ?>
-</form>
 </body>
 </html>
 <?php
     if (isset($_POST['logout'])) {
-    session_destroy();
+        header('Location: index.php');
+        session_destroy();
     }
 ?>
- 
