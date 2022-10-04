@@ -5,12 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculate Age</title>
+    <style>
+        form{
+            width: 500px;
+            margin: 0 auto;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        p{
+            text-align:center;
+            font-size: 10px;
+            margin:0;
+            padding:0;
+        }
+    </style>
 </head>
 <body>
 <form action="" method="post">
   <label for="birthday">Birthday:</label>
   <input type="date" id="birthday" name="birthday">
-  <input type="submit" name="submit" value="sbmit">
+  <input type="submit" name="submit" value="submit">
 </form>
 </body>
 </html>
@@ -21,13 +35,13 @@
         $today = new Datetime(date('y.m.d'));
         $diff = $today->diff($bday);
         if (empty($_POST['birthday'])) {
-            echo "No birthday";
+            echo "<p>No birthday</p>";
         } elseif ($bday > $today) {
-            echo "This is impossible";
+            echo "<p>This is impossible</p>";
         } else {
-            echo "Your Birthday : ".$_POST['birthday']."<br>";
-            echo "Today : ".date('y.m.d')."<br>";
-            echo " Your age :  $diff->y years $diff->m months $diff->d days";
+            echo "<p>Your Birthday : ".$_POST['birthday']."</p><br>";
+            echo "<p>Today : ".date('y.m.d')."</p><br>";
+            echo "<p> Your age :  $diff->y years $diff->m months $diff->d days</p>";
         }
         
     }
