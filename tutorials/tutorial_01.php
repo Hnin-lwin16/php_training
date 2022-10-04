@@ -11,6 +11,7 @@
                 width:400px;
                 border:2px solid #000000;
                 border-collapse: collapse;
+                margin: 0 auto;
             }
             td{
                 height:50px;
