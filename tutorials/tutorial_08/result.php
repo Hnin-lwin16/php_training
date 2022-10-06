@@ -3,7 +3,8 @@
     $select = $conn->prepare("SELECT * FROM MyStudentData");
     $select->execute();
     $result = $select->get_result();
-    echo "<a href='index.php'>Create Data</a>";
+    echo "<div><a href='index.php'>Create Data</a>";
+    echo "<a href='chart.php'>View Bar Chart</a></div>";
     echo "<table>";
     echo "<thead>";
     echo "<tr><th>Student Name</th>";
@@ -13,6 +14,7 @@
     echo "<th>Action</th></tr>";
     echo "</thead>";
     echo "<tbody>";
+    
     while ($row=mysqli_fetch_assoc($result)) {
         echo "<tr>
         <td>".$row["StudentName"]."</td>
@@ -80,10 +82,14 @@
         tbody tr:hover{
             background-color: #efeeee;
         }
+        div{
+            display:flex;
+            justify-content: space-between;
+        }
 
     </style>
 </head>
 <body>
-    
+
 </body>
 </html>

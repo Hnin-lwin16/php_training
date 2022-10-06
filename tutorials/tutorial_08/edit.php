@@ -97,20 +97,23 @@
 <?php
     include 'connect.php';
     $id = $_POST["id"];
-    
+    $year_arr = ["First Year","Second Year","Third Year","Fourth Year","Fifth Year"];
+    $class_arr = ["A","B","C","D"];
     if (isset($_POST['submit'])) {
         if (!empty($_POST['name'] and $_POST['year'] and $_POST['class'] and $_POST
         ['local'])) {
-            
-            $name = htmlspecialchars($_POST['name']);
-            $year = htmlspecialchars($_POST['year']);
-            $class = htmlspecialchars($_POST['class']);
-            $location = htmlspecialchars($_POST['local']);
-            $update = $conn->prepare("UPDATE MyStudentData SET StudentName=?, Year=?, 
-            Class=?, Location=? WHERE id=?");
-            $update->bind_param('ssssi', $name, $year, $class, $location, $id);
-            $update->execute();
-            header("Location:result.php");
-        } 
+            if (in_array($_POST['class'], $class_arr) and in_array($_POST['year'], 
+            $year_arr)){
+                $name = trim(htmlspecialchars($_POST['name']));
+                $year = htmlspecialchars($_POST['year']);
+                $class = htmlspecialchars($_POST['class']);
+                $location = trim(htmlspecialchars($_POST['local']));
+                $update = $conn->prepare("UPDATE MyStudentData SET StudentName=?, Year=?, 
+                Class=?, Location=? WHERE id=?");
+                $update->bind_param('ssssi', $name, $year, $class, $location, $id);
+                $update->execute();
+                header("Location:result.php");
+            } 
+        }
     }
 ?>

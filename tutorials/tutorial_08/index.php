@@ -25,6 +25,10 @@
         font-size: 20px;
         font-weight: 700;
     }
+    .form-control{
+        margin-bottom: 10px;
+        width: 250px;
+    }
     
   </style>
   <body>
@@ -37,13 +41,13 @@
                     <label class="visually-hidden" 
                     for="inlineFormInputGroupUsername">Student Name</label>
                     <div class="input-group">
-                    <div class="input-group-text">@</div>
+                    
                     <input type="text" class="form-control" name = "name" 
                     id="inlineFormInputGroupUsername" placeholder="Name">
-                    </div>
+                    
                 </div>
 
-                <div class="col-12">
+               <div class="col-12">
                 <input class="form-control" name = "year" type="text"  placeholder="Year">
                 </div>
 
@@ -70,22 +74,28 @@
 </html>
 <?php
     include 'connect.php';
+    $year_arr = ["First Year","Second Year","Third Year","Fourth Year","Fifth Year"];
+    $class_arr = ["A","B","C","D"];
     if (isset($_POST['submit'])) {
         if (empty($_POST['name'] and $_POST['year'] and $_POST['class'] and $_POST
         ['local'])) {
             echo "Write complete!";
         } else {
-            $name = htmlspecialchars($_POST['name']);
-            $year = htmlspecialchars($_POST['year']);
-            $class = htmlspecialchars($_POST['class']);
-            $location = htmlspecialchars($_POST['local']);
-           
-            
-            $insert = $conn->prepare("INSERT INTO MyStudentData (StudentName, Year, Class, 
-            Location) VALUES (?, ?, ?, ?)");
-            $insert->bind_param("ssss", $name, $year, $class, $location);
-            $insert->execute();
-            header("Location:result.php");
+            if (in_array($_POST['class'], $class_arr) and in_array($_POST['year'], 
+            $year_arr)){
+                $name = trim(htmlspecialchars($_POST['name']));
+                $year = htmlspecialchars($_POST['year']);
+                $class = htmlspecialchars($_POST['class']);
+                $location = trim(htmlspecialchars($_POST['local']));
+                $insert = $conn->prepare("INSERT INTO MyStudentData (StudentName, 
+                Year, Class, Location) VALUES (?, ?, ?, ?)");
+                $insert->bind_param("ssss", $name, $year, $class, $location);
+                $insert->execute();
+                header("Location:result.php");
+                
+            } else {
+                echo "Error!";
+            }  
         }
     }
 ?>
