@@ -44,6 +44,8 @@
 <?php
     include 'connect.php';
     $id = $_POST["id"];
+    $year_arr = ["First Year","Second Year","Third Year","Fourth Year","Fifth Year"];
+    $class_arr = ["A","B","C","D"];
     if (isset($_POST['edit'])) {
         $edit = $conn->query("SELECT * FROM MyStudentData WHERE id = '$id'");
         $row = $edit->fetch_assoc();
@@ -64,15 +66,24 @@
                     $row["StudentName"]?>" required> </div>
                 </div>
 
-                <div class="col-12">
-                <input class="form-control" name = "year" type="text"  placeholder="Year" 
-                value="<?php echo $row["Year"]?>" required>
-                </div>
+                <select class="form-select" aria-label="Default select example" 
+                name="year">
+                    <option selected>Select Year</option>
+                    <option value="1" ><?php echo $year_arr[0];?></option>
+                    <option value="2" ><?php echo $year_arr[1];?></option>
+                    <option value="3"><?php echo $year_arr[2];?></option>
+                    <option value="4"><?php echo $year_arr[3];?></option>
+                    <option value="5"><?php echo $year_arr[4];?></option>
+                </select>
 
-                <div class="col-12">
-                <input class="form-control" name = "class" type="text"  
-                placeholder="Class" value="<?php echo $row["Class"]?>" required>
-                </div>
+                <select class="form-select" aria-label="Default select example" 
+                name="class">
+                    <option selected>Select Class</option>
+                    <option value="1" ><?php echo $class_arr[0];?></option>
+                    <option value="2" ><?php echo $class_arr[1];?></option>
+                    <option value="3" ><?php echo $class_arr[2];?></option>
+                    <option value="4" ><?php echo $class_arr[3];?></option>
+                </select>
 
                 <div class="col-12">
                 <input class="form-control" name = "local" type="text"  
@@ -97,16 +108,55 @@
 <?php
     include 'connect.php';
     $id = $_POST["id"];
-    $year_arr = ["First Year","Second Year","Third Year","Fourth Year","Fifth Year"];
-    $class_arr = ["A","B","C","D"];
+    $c = $_POST['class'];
+        $cadd = '';
+        switch ($c) {
+            case '1':
+                echo $cadd = $class_arr[0];
+                break;
+            case '2':
+                echo $cadd = $class_arr[1];
+                break;
+            case '3':
+                echo $cadd = $class_arr[2];
+                break;
+            case '4':
+                echo $cadd = $class_arr[3];
+                break;
+            default:
+                # code...
+                break;
+        }
+        $y = $_POST['year'];
+        $yadd = '';
+        switch ($y) {
+            case '1':
+                echo $yadd = $year_arr[0];
+                break;
+            case '2':
+                echo $yadd = $year_arr[1];
+                break;
+            case '3':
+                echo $yadd = $year_arr[2];
+                break;
+            case '4':
+                echo $yadd = $year_arr[3];
+                break;
+            case '5':
+                echo $yadd = $year_arr[4];
+                break;
+            default:
+                # code...
+                break;
+        }
     if (isset($_POST['submit'])) {
-        if (!empty($_POST['name'] and $_POST['year'] and $_POST['class'] and $_POST
+        if (!empty($_POST['name'] and $yadd and $cadd and $_POST
         ['local'])) {
-            if (in_array($_POST['class'], $class_arr) and in_array($_POST['year'], 
+            if (in_array($cadd, $class_arr) and in_array($yadd, 
             $year_arr)){
                 $name = trim(htmlspecialchars($_POST['name']));
-                $year = htmlspecialchars($_POST['year']);
-                $class = htmlspecialchars($_POST['class']);
+                $year = htmlspecialchars($yadd);
+                $class = htmlspecialchars($cadd);
                 $location = trim(htmlspecialchars($_POST['local']));
                 $update = $conn->prepare("UPDATE MyStudentData SET StudentName=?, Year=?, 
                 Class=?, Location=? WHERE id=?");

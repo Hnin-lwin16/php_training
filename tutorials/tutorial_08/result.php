@@ -3,7 +3,7 @@
     $select = $conn->prepare("SELECT * FROM MyStudentData");
     $select->execute();
     $result = $select->get_result();
-    echo "<div><a href='index.php'>Create Data</a>";
+    echo "<div><a href='register.php'>Create Data</a>";
     echo "<a href='chart.php'>View Bar Chart</a></div>";
     echo "<table>";
     echo "<thead>";
