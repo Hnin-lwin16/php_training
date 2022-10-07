@@ -7,8 +7,11 @@
     require 'PHPMailer-master/src/PHPMailer.php';
     require 'PHPMailer-master/src/SMTP.php';
     include 'log-connect.php';
+    session_start();
     $error = '';
-    $url = "http://localhost/php_training/tutorials/tutorial_08/new-pass.php?id=1";
+    $otp = rand(100000,999999);
+    $_SESSION['otp'] = $otp;
+    $url = "http://localhost/php_training/tutorials/tutorial_08/new-pass.php?otp=".$otp;
     $select = "SELECT * FROM MyInfoData";
     $s_result = $conn->query($select);
     $row = $s_result->fetch_assoc();
