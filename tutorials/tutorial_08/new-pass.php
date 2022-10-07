@@ -1,5 +1,8 @@
 <?php
-    if (isset($_GET['id'])) {?>
+    session_start();
+    if (isset($_GET['otp'])) {
+        if ($_GET['otp'] == $_SESSION['otp']) {
+        ?>
         <!DOCTYPE html>
         <html lang="en">
         <head>
@@ -66,7 +69,7 @@
         </html>
 
 <?php  
-    }
+    } }
 ?>
 <?php
     if (isset($_POST['submit'])) {
