@@ -13,6 +13,6 @@ use App\Http\Controllers\ListController;
 |
 */
 
-Route::get('/',[ListController::class,'order'])->name("order");
-Route::post('/task',[ListController::class,'save'])->name("save");
-Route::delete('/task/{task}',[ListController::class,'delete'])->name("delete");
+Route::get('/',[ListController::class,'index'])->name("index");
+Route::post('/task',[ListController::class,'store'])->name("store");
+Route::delete('/task/{task}',[ListController::class,'destroy'])->name("destroy");

@@ -12,19 +12,19 @@ class ListController extends Controller
     {
         $this->taskInterface = $taskServiceInterface;
     }
-    public function order()
+    public function index()
     {
         $tasks = Task::orderBy('created_at', 'asc')->get();
         return view('tasks', [
             'tasks' => $tasks
         ]);
     }
-    public function save(Request $request)
+    public function store(Request $request)
     {
         $task = $this->taskInterface->saveUser($request);
         return redirect('/');
     }
-    public function delete($id)
+    public function destroy($id)
     {
         var_dump($id);
         $task = $this->taskInterface->deleteById($id);

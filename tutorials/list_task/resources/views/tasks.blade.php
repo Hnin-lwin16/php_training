@@ -1,9 +1,9 @@
 @extends('layout.app')
 @section('content')
 @include('common.errors')
-    <form action="{{ url('task') }}" method="POST" class="form-horizontal">
+    <h1>List Task</h1>
+    <form action="{{ route('store') }}" method="POST" class="form-horizontal">
             {{ csrf_field() }}
- 
             <!-- Task Name -->
             <div class="form-group">
                 <label for="task" class="col-sm-3 control-label">Task</label>
@@ -47,11 +47,9 @@
                                 <td class="table-text">
                                     <div>{{ $task->email }}</div>
                                 </td>
- 
                                 <td>
-                                <form class="delete-form" action="{{ url('task/'.$task->id) }}
-                                " 
-                                method="POST">
+                                <form class="delete-form" action="{{ route('destroy',
+                                [$task->id]) }}" method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
  

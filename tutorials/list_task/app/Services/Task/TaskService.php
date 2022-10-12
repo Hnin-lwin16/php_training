@@ -23,6 +23,7 @@ class TaskService implements TaskServiceInterface
     {
         $this->taskDao = $taskDao;
     }
+    
     /**
      * To save post
      * @param Request $request request with inputs
@@ -32,6 +33,7 @@ class TaskService implements TaskServiceInterface
     {
         return $this->taskDao->saveUser($request);
     }
+
     public function deleteById($id)
     {
         return $this->taskDao->deleteById($id);
