@@ -109,14 +109,10 @@
     } else {
             header("Location:register.php");
         }
-       
     }
 ?>
 <?php
     include 'connect.php';
-    
-    
-    
     if (isset($_POST['submit'])) {
         $c = $_POST['class'];
         $cadd = '';
