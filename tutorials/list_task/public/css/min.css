@@ -46,7 +46,7 @@ tbody tr {
   margin: 0px 10px;
   margin-top: 5px;
   background-color: #fafafa;
-
+  text-align: center;
   border-bottom-width: 2px;
 }
 
@@ -72,4 +72,95 @@ tbody td {
 .delete-form {
   padding: 0;
   border: 0;
+}
+/*Student*/
+.two-side{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.s-form{
+  width: 60%;
+}
+.m-form{
+  width: 35%;
+}
+/*Major*/
+.major{
+  margin: 0 auto;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+}
+.m-create{
+  margin-top: 20px;
+  display: inline-block;
+}
+.major-text{
+  margin-top: 20%;
+  margin-bottom: 20px;
+}
+/*Student*/
+.create{
+  text-decoration: none;
+  color: #424242;
+  padding: 5px 10px;
+  background-color: #f2cfcf;
+  border-radius: 5px;
+}
+.create:hover{
+  background-color: #d5d0d0;
+}
+.student-form{
+  width: 80%;
+  margin: 0 auto;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.stu-group{
+  margin-bottom: 10px;
+}
+.btn-act{
+  font-size: 10px;
+  width: 50px;
+  padding: 7px 7px;
+}
+.edit-form{
+  border: 0;
+}
+.stu-table th{
+  width: 500px;
+  text-align: center;
+}
+.stu-table tr{
+ display: inline-block;
+ width: 100%;
+ padding: 10px 0px;
+  border-bottom-width: 0;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.stu-table tbody tr:hover{
+  background-color: #dad3d3;
+}
+.stu-table td{
+  padding: 0;
+  width: 500px;
+}
+.stu-table td:second-child{
+  width: 250px;
+}
+.table-act form{
+  display: inline-block;
+  margin-bottom: 0;
+  padding: 0;
+}
+/*Edit*/
+.edit{
+  margin-top: 15%;
+}
+.edit-form{
+  margin: 0 auto;
+}
+.text{
+  width: 100%;
+  margin-bottom: 10px;
+  font-weight: 700;
 }

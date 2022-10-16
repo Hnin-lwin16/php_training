@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ListController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\MajorController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +18,12 @@ use App\Http\Controllers\ListController;
 Route::get('/',[ListController::class,'index'])->name("index");
 Route::post('/task',[ListController::class,'store'])->name("store");
 Route::delete('/task/{task}',[ListController::class,'destroy'])->name("destroy");
+Route::get('/student/list',[StudentController::class,'list'])->name("student.get.list");
+Route::post('/student/list',[StudentController::class,'store'])->name("student.list");
+Route::post('/student',[StudentController::class,'store'])->name("student.store");
+Route::get('/major',[MajorController::class,'index'])->name("major.index");
+Route::post('/major',[MajorController::class,'store'])->name("major.store");
+Route::delete('/student/list/{id}',[StudentController::class,'destroy'])->name("student.destroy");
+Route::get('/student/edit/{id}',[StudentController::class,'edit'])->name("student.edit");
+Route::post('/student/edit/{id}',[StudentController::class,'update'])->name("student.update");
+
