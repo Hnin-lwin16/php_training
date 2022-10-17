@@ -164,3 +164,10 @@ tbody td {
   margin-bottom: 10px;
   font-weight: 700;
 }
+.link{
+  display: flex;
+  justify-content: space-between;
+}
+.upload{
+  margin-bottom: 10px;
+}

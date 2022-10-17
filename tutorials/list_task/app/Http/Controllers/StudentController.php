@@ -9,6 +9,11 @@ use App\Models\Major;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use App\Exports\StudentListExport;
+use Excel;
+use App\Imports\StudentImport;
+use Illuminate\Support\Facades\Storage;
+
 
 class StudentController extends Controller
 {   
@@ -31,16 +36,17 @@ class StudentController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
-            'major_only' => 'required'
+            'major_only' => 'required',
+            'local' => 'required'
         ]);
     
         if ($validator->fails()) {
-            return redirect('/major')
+            return redirect('/student')
                 ->withInput()
                 ->withErrors($validator);
         }
         $student = $this->studentInterface->saveStudent($request);
-        return redirect('/major');
+        return redirect('/student/list');
     }
    
     
@@ -61,6 +67,16 @@ class StudentController extends Controller
         $update = $this->studentInterface->updateById($request,$result);
         return $update;
     }
-   
+    public function exportExcel() 
+    {
+        $export = $this->studentInterface->exportExcel();
+        return $export;
+    }
+
+    public function import(Request $request)
+    {
+        $export = $this->studentInterface->import($request);
+        return view('studentList');
+    }
 }
 ?>

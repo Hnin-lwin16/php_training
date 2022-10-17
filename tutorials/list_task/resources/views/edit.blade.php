@@ -17,16 +17,25 @@
             </div>
             <div class="form-group">
                 <div class="col-sm-6">
-                    <input type="text" name="major_only" id="task-name" 
-                    class="form-control" placeholder="Major Name" value="
-                    {{$result->major->major}}">
+                <?php
+                        $major = (\App\Models\Major::all());
+                ?>
+                    <select class="form-select" aria-label="Default select example"         
+                    name="major_only">
                    
-                    <input type="text" name="major_id" id="task-name" 
-                    class="form-control" placeholder="Major Name" value="{{$result->major_id}}
-                    " hidden>
+                    @foreach ($major as $m)
+                    <option value="{{$m->id}}">{{$m->major}}</option>
+                    @endforeach
+                    </select>
                 </div>
             </div>
- 
+
+            <div class="form-group stu-group">
+                <div class="col-sm-6">
+                    <input type="text" name="local" id="task-name" 
+                    class="form-control" placeholder="Loaction" value="{{$result->location}}">
+                </div>
+            </div>
             <!-- Add Task Button -->
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-6">

@@ -4,6 +4,7 @@ namespace App\Dao\Student;
 use App\Contracts\Dao\Student\StudentDaoInterface;
 use App\Models\Studend;
 use App\Models\Major;
+use App\Models\Studentlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -24,7 +25,22 @@ class StudentDao implements StudentDaoInterface
         $student = new Studend;
         $student->name = $request->name;
         $student->major_id= $request->get('major_only');
+        $major = Major::find($student->major_id);
+        $student->major = $major->major;
+        $student->location = $request->local;
         $student->save();
+    //    $result =Studend::with("major")->find($student->major_id);
+    //    echo $result->name;
+    //    $get_list = new Studentlist;
+    //   
+    //            
+    //           
+    //            $get_list->studentName = $result->name;
+    //            $get_list->major = $result->major->major;
+    //            $get_list->save();
+            
+            
+        
         return $student;
     }
     
@@ -36,9 +52,12 @@ class StudentDao implements StudentDaoInterface
     public function deleteById($id)
     {   
         $delete = Studend::find($id);
-        $m_delete = Major::find($id);
+        
+        //$l_delete = Studentlist::find($id);
+
         $delete->delete();
-        $m_delete->delete();
+       
+        //$l_delete->delete();
     }
 
      /**
@@ -63,9 +82,11 @@ class StudentDao implements StudentDaoInterface
      */
     public function updateById(Request $request,$id)
     {
+        
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
-            'major_only' => 'required'
+            'major_only' => 'required',
+            'local' => 'required'
         ]);
     
         if ($validator->fails()) {
@@ -74,13 +95,22 @@ class StudentDao implements StudentDaoInterface
                 ->withErrors($validator);
         }
         
-        $result =Studend::with("major")->find($id);
+        $result =Studend::find($id);
+        
         $result->name = $request->name;
-        $result->major_id = $request->major_id;
-        $major = Major::find($result->major_id);
-        $major->major = $request->major_only;
-        $major->save();
-        $result->major->major = $major->major;
+        $result->major_id = $request->get('major_only');
+        $result->location = $request->local;
+         $major = Major::find($result->major_id);
+        $result->major = $major->major;
+        echo $result;
+        //$major = Major::find($result->major_id);
+        //$list = Studentlist::find($result->major_id);
+        //$major->major = $request->major_only;
+        //$major->save();
+        //$result->major->major = $major->major;
+        //$result->save();
+        //$list->name = $result->name;
+        //$list->major = $result->major->major;
         $result->save();
         return view('studentList');
     }

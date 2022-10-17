@@ -9,8 +9,8 @@ use App\Models\Major;
 class Studend extends Model
 {
     use HasFactory;
-    protected $fill = [
-        'id','name','major_id'
+    protected $fillable = [
+        'name','major','location','major_id'
     ];
    
     public function major()

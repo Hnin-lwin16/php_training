@@ -8,7 +8,19 @@
     <link rel="stylesheet" href="/css/min.css">
 </head>
 <body>
-<a href="{{route('major.index')}}" class="create m-create">Create</a>
+   
+    <a href="{{route('major.index')}}" class="create m-create">Major</a>
+    <a href="{{route('student.index')}}" class="create m-create">Student</a>
+    <a href="{{route('excel')}}" class="create m-create">Import</a>
+    
+    <form action="{{route('student.get')}}" method="POST" enctype="multipart/form-data">
+    {{ csrf_field() }}
+                
+                <input type="file" name = "file" class="upload">
+                <br>
+                <button type="submit" class="btn-act">Import</button>
+                
+    </form>
         <div class="panel panel-default stu-panel">
             <div class="panel-heading">
                 Student List
@@ -20,12 +32,13 @@
                         <tr>
                             <th>Student Name</th>
                             <th>Major</th>
+                            <th>Location</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <!-- Table Body -->
                     <tbody >
-                        @foreach (\App\Models\Studend::with("major")->get() as $va => 
+                        @foreach (\App\Models\Studend::get() as $va => 
                         $re)
                             <tr>
                                 <!-- Task Name -->
@@ -34,7 +47,10 @@
                                 </td>
                                
                                 <td class="table-text">
-                                    <div>{{ $re->major->major }}</div>
+                                    <div>{{ $re->major}}</div>
+                                </td>
+                                <td class="table-text">
+                                    <div>{{ $re->location }}</div>
                                 </td>
 
                                 <td class="table-act">
@@ -61,6 +77,7 @@
                 </table>
             </div>
         </div>
+        
 </body>
 </html>
 

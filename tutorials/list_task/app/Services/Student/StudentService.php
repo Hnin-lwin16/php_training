@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Studend;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Exports\StudentListExport;
+use App\Imports\StudentImport;
+use Excel;
 
 /**
  * Service class for student.
@@ -62,6 +65,16 @@ class StudentService implements StudentServiceInterface
     public function updateById(Request $request,$id)
     {
         return $this->studentDao->updateById($request,$id);
+    }
+
+    public function exportExcel() 
+    {
+        return Excel::download(new StudentListExport, 'test.xlsx');
+    }
+    
+    public function import(Request $request) 
+    {
+        Excel::import(new StudentImport,$request->file);
     }
 }
 ?>

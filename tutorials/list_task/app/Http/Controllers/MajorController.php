@@ -34,6 +34,6 @@ class MajorController extends Controller
         }
 
         $major = $this->majorInterface->saveMajor ($request);
-        return view('student');
+        return redirect('/student/list');
     }
 }
