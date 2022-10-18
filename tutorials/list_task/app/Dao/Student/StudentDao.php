@@ -25,23 +25,44 @@ class StudentDao implements StudentDaoInterface
         $student = new Student;
         $student->name = $request->name;
         $student->major_id= $request->get('major_only');
-        //$major = Major::find($student->major_id);
-        //$student->major = $major->major;
         $student->location = $request->local;
         $student->save();
-    //    $result =Studend::with("major")->find($student->major_id);
-    //    echo $result->name;
-    //    $get_list = new Studentlist;
-    //   
-    //            
-    //           
-    //            $get_list->studentName = $result->name;
-    //            $get_list->major = $result->major->major;
-    //            $get_list->save();
-            
-            
+    }
+
+    public function list(){
+        $search = DB::table('majors')->select(DB::raw('*'))
+        ->join('students', 'majors.id', '=', 'students.major_id')
+        ->when(request('name'),function($q){
+            $name = request('name');
+            $q->where('name','LIKE','%'.$name.'%');
+        })
+        ->when(request('major'),function($q){
+            $local = request('major');
+            $q->where('major','LIKE','%'.$local.'%');
+        })
+        ->when(request('location'),function($q){
+            $local = request('location');
+            $q->where('location','LIKE','%'.$local.'%');
+        })
+        ->when(request('date'),function($q){
+            $date = request('date');
+            //$date = new Datetime(request('date'));
+            $q->whereDate('students.created_at', $date);
+        })
+        ->when(request('end-date'),function($q){
+            $start_date = request('date');
+            $end_date = request('end-date');
+            //$date = new Datetime(request('date'));
+            $q->whereDate('students.created_at', [$start_date,$end_date]);
+        })
+        ->paginate(10);
         
-        return $student;
+        return view('studentList',[
+            "data" => $search,
+            "name" => request('name'),
+            "major" => request('major'),
+            "location" => request('location')
+        ]);
     }
     
     /**
@@ -52,12 +73,7 @@ class StudentDao implements StudentDaoInterface
     public function deleteById($id)
     {   
         $delete = Student::find($id);
-        
-        //$l_delete = Studentlist::find($id);
-
         $delete->delete();
-       
-        //$l_delete->delete();
     }
 
      /**
@@ -67,11 +83,9 @@ class StudentDao implements StudentDaoInterface
      */
     public function editById($id)
     {
-        $result =Student::with("major")->get();
-        $re =  $result[$id];
-        
+        $result =Student::find($id);;
         return view('edit',[
-            "result" => $re
+            "result" => $result
         ]);
     }
 
@@ -96,18 +110,17 @@ class StudentDao implements StudentDaoInterface
         }
         
         $result =Student::with("major")->find($id);
-        
         $result->name = $request->name;
         $result->major_id = $request->get('major_only');
         $result->location = $request->local;
-         $major = Major::find($result->major_id);
-        
-         
+        $major = Major::find($result->major_id);
         $result->major->major = $major->major;
-        
         $result->save();
         
-        return view('studentList');
     }
+
+    public function search()
+    {
+    }    
 }
 ?>

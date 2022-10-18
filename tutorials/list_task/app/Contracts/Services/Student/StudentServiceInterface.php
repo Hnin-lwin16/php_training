@@ -15,7 +15,7 @@ interface StudentServiceInterface
      * @return Object major saved post
      */
     public function saveStudent(Request $request);
-
+    public function list();
     /**
      * To Save student and major with values from request
      * @param Request $request request including inputs

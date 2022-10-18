@@ -25,11 +25,13 @@ class StudentController extends Controller
     }
 
     public function index() {
+        
         return view('student');
     }
     
     public function list() {
-        return view('studentList');
+        $student = $this->studentInterface->list();
+        return $student;
     }
 
     public function store(Request $request)
@@ -65,7 +67,7 @@ class StudentController extends Controller
     public function update(Request $request,$result)
     {
         $update = $this->studentInterface->updateById($request,$result);
-        return $update;
+        return redirect('/student/list');
     }
     
     public function exportExcel() 
@@ -77,7 +79,7 @@ class StudentController extends Controller
     public function import(Request $request)
     {
         $export = $this->studentInterface->import($request);
-        return view('studentList');
+        return redirect('/student/list');
     }
 }
 ?>

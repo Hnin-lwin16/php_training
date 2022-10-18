@@ -245,7 +245,7 @@ tbody td {
 
 .s-list {
   margin-top: 10px;
-  margin-bottom: 0;
+  margin-bottom: 10px;
 }
 
 .s-list div {
@@ -263,6 +263,10 @@ tbody td {
 .list-table tbody td {
   width: 260px;
 
+}
+
+.list-table thead tr {
+  padding-left: 10px;
 }
 
 .list-table tbody tr {
@@ -291,4 +295,6 @@ tbody td {
   margin-top: 20%;
 }
 
-.ma-form {}
+.pagination {
+  margin-top: 10px;
+}

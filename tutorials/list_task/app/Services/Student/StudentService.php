@@ -38,6 +38,10 @@ class StudentService implements StudentServiceInterface
         return $this->studentDao->saveStudent($request);
     }
 
+    public function list()
+    {
+        return $this->studentDao->list();
+    }
     /**
      * To delete student and major with values from id
      * @param $id
@@ -79,6 +83,11 @@ class StudentService implements StudentServiceInterface
         $start = new StudentImport;
         
         Excel::import($start,$request->file);
+    }
+    
+    public function search()
+    {
+        return $this->studentDao->search();
     }
 }
 ?>

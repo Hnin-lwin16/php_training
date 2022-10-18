@@ -38,5 +38,7 @@ Route::get('/excel',[StudentController::class,'exportExcel'])->name("excel");
 
 Route::post('/student/list',[StudentController::class,'import'])->name("student.get");
 
+Route::get('/search',[StudentController::class,'search'])->name("search");
+
 
 

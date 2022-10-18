@@ -16,6 +16,7 @@ interface StudentDaoInterface
      */
     public function saveStudent(Request $request);
 
+    public function list();
      /**
      * To delete student and major with values from id
      * @param $id

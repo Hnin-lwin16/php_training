@@ -34,11 +34,6 @@ class MajorDao implements MajorDaoInterface
     public function editMajor ($id)
     {
         $edit_major = Major::find($id);
-       
-        
-        //$edit_major->major = major;
-        //$edit_major->save();
-        //return redirect('/major/list');
         return view('major-edit',[
             "edit" => $edit_major
         ]);
