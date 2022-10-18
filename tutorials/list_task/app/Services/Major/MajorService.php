@@ -33,5 +33,19 @@ class MajorService implements MajorServiceInterface
     {
         return $this->majorDao->saveMajor($request);
     }
+    public function destroyMajor ($id)
+    {
+        return $this->majorDao->destroyMajor($id);
+    }
+    
+    public function editMajor ($id)
+    {
+        return $this->majorDao->editMajor ($id);
+    }
+
+    public function updateMajor (Request $request,$id)
+    {
+        return $this->majorDao->updateMajor ($request,$id);
+    }
 }
 ?>

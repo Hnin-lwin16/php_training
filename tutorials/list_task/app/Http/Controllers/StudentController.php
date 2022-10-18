@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Services\Student\StudentServiceInterface;
 use Illuminate\Http\Request;
-use App\Models\Studend;
+use App\Models\Student;
 use App\Models\Major;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -67,6 +67,7 @@ class StudentController extends Controller
         $update = $this->studentInterface->updateById($request,$result);
         return $update;
     }
+    
     public function exportExcel() 
     {
         $export = $this->studentInterface->exportExcel();

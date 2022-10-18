@@ -2,25 +2,33 @@
 
 namespace App\Imports;
 
-use App\Models\Studend;
+use App\Models\Student;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Imports\HeadingRowFormatter;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithStartRow;
 
-class StudentImport implements ToModel
+class StudentImport implements ToModel, WithStartRow
 {
     /**
     * @param array $row
     *
     * @return \Illuminate\Database\Eloquent\Model|null
     */
+
+    public function startRow(): int
+    {
+        return 2;
+    }
+    
     public function model(array $row)
     {
-        return new Studend([
-            'name'     => $row[1],
-            'major'    => $row[2], 
-            'location' => $row[3],
-            'created_at' => $row[4],
-            'updated_at' => $row[5],
-            'major_id' => $row[6]
+        return new Student([
+            'name'     => $row[1], 
+            'location' => $row[2],
+            'created_at' => $row[3],
+            'updated_at' => $row[4],
+            'major_id' => $row[5]
         ]);
     }
 }

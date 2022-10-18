@@ -2,7 +2,7 @@
 namespace App\Dao\Student;
 
 use App\Contracts\Dao\Student\StudentDaoInterface;
-use App\Models\Studend;
+use App\Models\Student;
 use App\Models\Major;
 use App\Models\Studentlist;
 use Illuminate\Http\Request;
@@ -22,11 +22,11 @@ class StudentDao implements StudentDaoInterface
      */
     public function saveStudent(Request $request)
     {
-        $student = new Studend;
+        $student = new Student;
         $student->name = $request->name;
         $student->major_id= $request->get('major_only');
-        $major = Major::find($student->major_id);
-        $student->major = $major->major;
+        //$major = Major::find($student->major_id);
+        //$student->major = $major->major;
         $student->location = $request->local;
         $student->save();
     //    $result =Studend::with("major")->find($student->major_id);
@@ -51,7 +51,7 @@ class StudentDao implements StudentDaoInterface
      */
     public function deleteById($id)
     {   
-        $delete = Studend::find($id);
+        $delete = Student::find($id);
         
         //$l_delete = Studentlist::find($id);
 
@@ -67,7 +67,7 @@ class StudentDao implements StudentDaoInterface
      */
     public function editById($id)
     {
-        $result =Studend::with("major")->get();
+        $result =Student::with("major")->get();
         $re =  $result[$id];
         
         return view('edit',[
@@ -95,23 +95,18 @@ class StudentDao implements StudentDaoInterface
                 ->withErrors($validator);
         }
         
-        $result =Studend::find($id);
+        $result =Student::with("major")->find($id);
         
         $result->name = $request->name;
         $result->major_id = $request->get('major_only');
         $result->location = $request->local;
          $major = Major::find($result->major_id);
-        $result->major = $major->major;
-        echo $result;
-        //$major = Major::find($result->major_id);
-        //$list = Studentlist::find($result->major_id);
-        //$major->major = $request->major_only;
-        //$major->save();
-        //$result->major->major = $major->major;
-        //$result->save();
-        //$list->name = $result->name;
-        //$list->major = $result->major->major;
+        
+         
+        $result->major->major = $major->major;
+        
         $result->save();
+        
         return view('studentList');
     }
 }

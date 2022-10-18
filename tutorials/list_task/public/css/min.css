@@ -2,14 +2,17 @@
   width: 50%;
   margin: 10px auto;
 }
-.row{
+
+.row {
   margin-top: 30px;
 }
-h1{
-  text-align: center;
-  padding-bottom: 10px;
+
+h1 {
   margin-top: 20px;
+  padding-bottom: 10px;
+  text-align: center;
 }
+
 form {
   padding: 10px;
   border: 2px solid #e6e6e6;
@@ -73,101 +76,219 @@ tbody td {
   padding: 0;
   border: 0;
 }
+
 /*Student*/
-.two-side{
+.two-side {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.s-form{
+
+.s-form {
   width: 60%;
 }
-.m-form{
+
+.m-form {
   width: 35%;
 }
+
 /*Major*/
-.major{
+.major {
   margin: 0 auto;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
 }
-.m-create{
-  margin-top: 20px;
+
+.m-create {
   display: inline-block;
+  margin-top: 20px;
 }
-.major-text{
-  margin-top: 20%;
+
+.major-text {
+  margin-top: 10%;
   margin-bottom: 20px;
 }
+
 /*Student*/
-.create{
-  text-decoration: none;
-  color: #424242;
+.create {
   padding: 5px 10px;
   background-color: #f2cfcf;
+  color: #424242;
+  text-decoration: none;
   border-radius: 5px;
 }
-.create:hover{
+
+.create:hover {
   background-color: #d5d0d0;
 }
-.student-form{
+
+.student-form {
   width: 80%;
   margin: 0 auto;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
-.stu-group{
+.stu-group {
   margin-bottom: 10px;
 }
-.btn-act{
-  font-size: 10px;
+
+.btn-act {
   width: 50px;
   padding: 7px 7px;
+  font-size: 10px;
 }
-.edit-form{
+
+.edit-form {
   border: 0;
 }
-.stu-table th{
+
+.stu-table th {
   width: 500px;
   text-align: center;
 }
-.stu-table tr{
- display: inline-block;
- width: 100%;
- padding: 10px 0px;
-  border-bottom-width: 0;
+
+.stu-table tr {
+  display: inline-block;
+  width: 100%;
+  padding: 10px 0px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-bottom-width: 0;
 }
-.stu-table tbody tr:hover{
+
+.stu-table tbody tr:hover {
   background-color: #dad3d3;
 }
-.stu-table td{
-  padding: 0;
+
+.stu-table td {
   width: 500px;
+  padding: 0;
 }
-.stu-table td:second-child{
+
+.stu-table td:second-child {
   width: 250px;
 }
-.table-act form{
+
+.table-act form {
   display: inline-block;
   margin-bottom: 0;
   padding: 0;
 }
+
 /*Edit*/
-.edit{
+.edit {
   margin-top: 15%;
 }
-.edit-form{
+
+.edit-form {
   margin: 0 auto;
 }
-.text{
+
+.text {
   width: 100%;
   margin-bottom: 10px;
   font-weight: 700;
 }
-.link{
+
+.link {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  margin-bottom: 5%;
 }
-.upload{
+
+.upload {
   margin-bottom: 10px;
 }
+
+.m-tbody tr {
+  width: 97%;
+}
+
+.m-thead th {
+  border-bottom-width: 0px;
+}
+
+.m-list {
+  justify-content: space-between;
+}
+
+.import {
+  padding: 0;
+  border: 0;
+}
+
+.import input {
+  margin-bottom: 0;
+}
+
+.btn-import {
+  padding: 5px 10px;
+  background-color: #f2cfcf;
+
+  color: #424242;
+  border-color: #f2cfcf;
+  border-radius: 5px;
+}
+
+.port-link {
+  align-items: center;
+  width: 40%;
+}
+
+.creat-link {
+  margin-top: 0;
+  padding-bottom: 5x;
+}
+
+.created {
+  justify-content: space-between;
+  width: 300px;
+}
+
+.s-list {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.s-list div {
+  margin-bottom: 0;
+}
+
+.list {
+  width: 80%;
+}
+
+.list-table tbody tr:hover {
+  background-color: #e0dada;
+}
+
+.list-table tbody td {
+  width: 260px;
+
+}
+
+.list-table tbody tr {
+  width: 99%;
+}
+
+.s-title {
+  margin-top: 10%;
+}
+
+.s-create {
+  display: inline-block;
+  margin-bottom: 10px;
+  margin-left: 70px;
+}
+
+.select-form {
+  margin-bottom: 10px;
+}
+
+.s-btn img {
+  width: 13px !important;
+}
+
+.ma-edit {
+  margin-top: 20%;
+}
+
+.ma-form {}

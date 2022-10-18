@@ -21,10 +21,14 @@ class MajorController extends Controller
         return view('major');
     }
 
+    public function list(){
+        return view('major-list');
+    }
+
     public function store(Request $request) 
     {
         $validator = Validator::make($request->all(), [
-            'major_only' => 'required'
+            'major_only' => 'required|unique:majors,major'
         ]);
      
         if ($validator->fails()) {
@@ -34,6 +38,25 @@ class MajorController extends Controller
         }
 
         $major = $this->majorInterface->saveMajor ($request);
-        return redirect('/student/list');
+        return view('major-list');
+    }
+
+    public function destroy($id)
+    {
+        $major_delete = $this->majorInterface->destroyMajor ($id);
+        return redirect('/major/list');
+    }
+
+    public function edit($id)
+    {
+        $major_edit = $this->majorInterface->editMajor ($id);
+        return $major_edit;
+        
+    }
+
+    public function update(Request $request,$id)
+    {
+        $major_update = $this->majorInterface->updateMajor ($request,$id);
+        return $major_update;
     }
 }

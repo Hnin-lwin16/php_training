@@ -4,12 +4,13 @@ namespace App\Services\Student;
 use App\Contracts\Dao\Student\StudentDaoInterface;
 use App\Contracts\Services\Student\StudentServiceInterface;
 use Illuminate\Http\Request;
-use App\Models\Studend;
+use App\Models\Student;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Exports\StudentListExport;
 use App\Imports\StudentImport;
 use Excel;
+
 
 /**
  * Service class for student.
@@ -69,12 +70,15 @@ class StudentService implements StudentServiceInterface
 
     public function exportExcel() 
     {
-        return Excel::download(new StudentListExport, 'test.xlsx');
+        return Excel::download(new StudentListExport, 'studentlist.xlsx');
     }
+    
     
     public function import(Request $request) 
     {
-        Excel::import(new StudentImport,$request->file);
+        $start = new StudentImport;
+        
+        Excel::import($start,$request->file);
     }
 }
 ?>

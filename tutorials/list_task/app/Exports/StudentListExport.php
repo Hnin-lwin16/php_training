@@ -2,19 +2,29 @@
 
 namespace App\Exports;
 
-use App\Models\Studend;
+use App\Models\Student;
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithHeadings;
 
-
-class StudentListExport implements FromCollection
+class StudentListExport implements FromCollection, WithHeadings
 {   
     
     /**
     * @return \Illuminate\Support\Collection
     */
+    public function headings(): array{
+        return[
+            'ID',
+            'Student Name',
+            'Location',
+            'created_at',
+            'updated_at',
+            'Major Id'
+        ];
+    }
+
     public function collection()
     {
-        $export = Studend::all();
-        return $export;
+       return Student::all();
     }
 }
