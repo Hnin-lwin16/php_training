@@ -22,6 +22,7 @@ class StudentDao implements StudentDaoInterface
      */
     public function saveStudent(Request $request)
     {
+        
         $student = new Student;
         $student->name = $request->name;
         $student->major_id= $request->get('major_only');
@@ -46,13 +47,11 @@ class StudentDao implements StudentDaoInterface
         })
         ->when(request('date'),function($q){
             $date = request('date');
-            //$date = new Datetime(request('date'));
             $q->whereDate('students.created_at', $date);
         })
         ->when(request('end-date'),function($q){
             $start_date = request('date');
             $end_date = request('end-date');
-            //$date = new Datetime(request('date'));
             $q->whereDate('students.created_at', [$start_date,$end_date]);
         })
         ->paginate(10);
@@ -61,7 +60,9 @@ class StudentDao implements StudentDaoInterface
             "data" => $search,
             "name" => request('name'),
             "major" => request('major'),
-            "location" => request('location')
+            "location" => request('location'),
+            "start" => request('date'),
+            "end" => request('end-date')
         ]);
     }
     
@@ -116,11 +117,5 @@ class StudentDao implements StudentDaoInterface
         $major = Major::find($result->major_id);
         $result->major->major = $major->major;
         $result->save();
-        
-    }
-
-    public function search()
-    {
-    }    
+    }   
 }
-?>

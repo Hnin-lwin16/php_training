@@ -51,7 +51,6 @@ class StudentController extends Controller
         return redirect('/student/list');
     }
    
-    
     public function destroy($id)
     {
         $student = $this->studentInterface->deleteById($id);
@@ -82,4 +81,3 @@ class StudentController extends Controller
         return redirect('/student/list');
     }
 }
-?>

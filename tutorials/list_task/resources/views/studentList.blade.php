@@ -17,6 +17,8 @@
     <div class="link created">
     <a href="{{route('major.index')}}" class="create m-create creat-link">Create Major</a>
     <a href="{{route('student.index')}}" class="create m-create creat-link">Create Student</a>
+    <a href="{{route('data.index')}}" class="create m-create creat-link" 
+                id="create-new-stu">Ajax Student</a>
     </div>
     <div class="link port-link">
     <a href="{{route('excel')}}" class="create m-create creat-link">Export</a>
@@ -24,21 +26,21 @@
     {{ csrf_field() }}
                 
         <input type="file" name = "file" class="upload">
-        <button type="submit" class="btn-act btn-import">Import</button>
+        <button type="submit" class="btn-import">Import</button>
                 
     </form>
     </div>
     </div>
     
-    <form action="{{route('student.get.list')}}" method="get" >
+    <form action="{{route('student.get.list')}}" method="get" class="r-form">
     {{ csrf_field() }}
         <input type="text" name="name" placeholder="Name" value={{$name}}>
         <input type="text" name="major" placeholder="Major" placeholder="Major" value={{$major}}>
         <input type="text" name="location" placeholder="Location" value={{$location}}>
-        <input type="date" name="date">
-        <input type="date" name="end-date">
-        <button type="submit" class="btn-act btn-import">Search</button>
-        <a href="{{route('student.get.list')}}" class="create m-create creat-link">Remove</a>
+        <input type="date" name="date" value="{{$start}}">
+        <input type="date" name="end-date"  value="{{$end}}">
+        <button type="submit" class="s-link">Search</button>
+        <a href="{{route('student.get.list')}}" class="r-link">Remove</a>
     </form>
     <div class="panel panel-default stu-panel">
         <div class="panel-heading">
@@ -85,7 +87,7 @@
                             <td class="table-act">
                                 
                             <form class="delete-form" action="{{ route('student.destroy',
-                            [$d->id]) }}" method="POST">
+                            $d->id) }}" method="POST">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
  
@@ -94,7 +96,7 @@
                             </form>
                                 
                             <form class="edit-form" action="{{route('student.edit', 
-                            [$d->id])}}" method="get">
+                            $d->id)}}" method="get">
                                 <button type="submit" class="btn btn-danger btn-act">
                                 edit</button>
                                 </form>

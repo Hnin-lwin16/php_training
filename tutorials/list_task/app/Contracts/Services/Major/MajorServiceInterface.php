@@ -37,4 +37,3 @@ interface MajorServiceInterface
      */
     public function updateMajor(Request $request,$id);
 }
-?>

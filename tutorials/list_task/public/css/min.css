@@ -220,9 +220,8 @@ tbody td {
 }
 
 .btn-import {
-  padding: 5px 10px;
+  padding: 3px 10px;
   background-color: #f2cfcf;
-
   color: #424242;
   border-color: #f2cfcf;
   border-radius: 5px;
@@ -240,7 +239,7 @@ tbody td {
 
 .created {
   justify-content: space-between;
-  width: 300px;
+  width: 360px;
 }
 
 .s-list {
@@ -297,4 +296,26 @@ tbody td {
 
 .pagination {
   margin-top: 10px;
+}
+nav{
+  width: 200px;
+  margin: 0 auto;
+}
+.r-link{
+  padding: 5px 10px;
+  background-color: #f2cfcf;
+  color: #424242;
+  border-color: #f2cfcf;
+  border-radius: 5px;
+  text-decoration: none;
+}
+.s-link{
+  background-color: #f2cfcf;
+  color: #424242;
+  border-color: #f2cfcf;
+  border-radius: 5px;
+}
+.r-form input{
+  width: 210px;
+  margin-left: 10px;
 }

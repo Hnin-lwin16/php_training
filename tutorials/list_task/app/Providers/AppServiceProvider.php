@@ -25,6 +25,10 @@ class AppServiceProvider extends ServiceProvider
         'App\Dao\Major\MajorDao');
         $this->app->bind('App\Contracts\Services\Major\MajorServiceInterface', 
         'App\Services\Major\MajorService');
+        $this->app->bind('App\Contracts\Dao\ApiStu\ApiDaoInterface', 
+        'App\Dao\ApiStu\ApiDao');
+        $this->app->bind('App\Contracts\Services\ApiStu\ApiServiceInterface', 
+        'App\Services\ApiStu\ApiService');
     }
 
     /**

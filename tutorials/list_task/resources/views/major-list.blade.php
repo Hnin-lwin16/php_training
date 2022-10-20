@@ -33,7 +33,7 @@
                             <td class="table-act m-act">
                                 
                                 <form class="delete-form" action="{{ route('major.destroy',
-                                [$major->id]) }}" method="POST">
+                                $major->id) }}" method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
  
@@ -41,7 +41,7 @@
                                 Delete</button>
                                 </form>
 
-                                <form class="edit-form" action="{{route('major.edit',[$major->id])}}
+                                <form class="edit-form" action="{{route('major.edit',$major->id)}}
                                 " method="get">
                                 <button type="submit" class="btn btn-danger btn-act">
                                 edit</button>

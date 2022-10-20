@@ -57,4 +57,3 @@ class MajorDao implements MajorDaoInterface
         return redirect('/major/list');
     }
 }
-?>
