@@ -34,13 +34,14 @@
     
     <form action="{{route('student.get.list')}}" method="get" class="r-form">
     {{ csrf_field() }}
-        <input type="text" name="name" placeholder="Name" value={{$name}}>
-        <input type="text" name="major" placeholder="Major" placeholder="Major" value={{$major}}>
-        <input type="text" name="location" placeholder="Location" value={{$location}}>
+        
+         <input type="text" name="name" placeholder="Name" value={{$name}}></td>
+         <input type="text" name="major" placeholder="Major" placeholder="Major" value={{$major}}>
+         <input type="text" name="location" placeholder="Location" value={{$location}}>
         <input type="date" name="date" value="{{$start}}">
         <input type="date" name="end-date"  value="{{$end}}">
         <button type="submit" class="s-link">Search</button>
-        <a href="{{route('student.get.list')}}" class="r-link">Remove</a>
+        <a href="{{route('student.get.list')}}" class="r-link">Remove</a>        
     </form>
     <div class="panel panel-default stu-panel">
         <div class="panel-heading">
@@ -63,7 +64,6 @@
                 <tbody class="">
                 @foreach ($data as $d)
                     
-                   
                         <tr>
                                 <!-- Task Name -->
                             <td class="table-text">

@@ -2,7 +2,7 @@
 namespace App\Contracts\Dao\ApiStu;
 
 use Illuminate\Http\Request;
-use App\Models\ApiStudent;
+use App\Models\Student;
 
 /**
  * Interface of Data Access Object for Authentication

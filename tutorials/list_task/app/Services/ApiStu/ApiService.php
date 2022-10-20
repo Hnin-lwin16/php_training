@@ -4,7 +4,7 @@ namespace App\Services\ApiStu;
 use App\Contracts\Dao\ApiStu\ApiDaoInterface;
 use App\Contracts\Services\ApiStu\ApiServiceInterface;
 use Illuminate\Http\Request;
-use App\Models\ApiStudent;
+use App\Models\Student;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 

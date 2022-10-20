@@ -2,7 +2,7 @@
 namespace App\Contracts\Services\ApiStu;
 
 use Illuminate\Http\Request;
-use App\Models\ApiStudent;
+use App\Models\Student;
 
 /**
  * Interface for api service

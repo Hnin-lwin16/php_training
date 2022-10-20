@@ -2,7 +2,7 @@
 namespace App\Dao\ApiStu;
 
 use App\Contracts\Dao\ApiStu\ApiDaoInterface;
-use App\Models\ApiStudent;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 /**
@@ -13,11 +13,11 @@ class ApiDao implements ApiDaoInterface
     public function edit($id)
     {
         $where = array('id' => $id);
-        $post  = Post::where($where)->first();
+        $post  = Student::where($where)->first();
     }
 
     public function destroy($id)
     {
-        $post = ApiStudent::where('id',$id)->delete();
+        $post = Student::where('id',$id)->delete();
     }
 }

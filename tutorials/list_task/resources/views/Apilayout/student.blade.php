@@ -8,7 +8,7 @@
     <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/api.css">
-
+<meta name="csrf-token" content="{{ csrf_token() }}" />
 </head>
 <body>
  
@@ -24,17 +24,17 @@
            <thead>
               <tr>
                 <th>Name</th>
-                 <th>Gender</th>
-                 <th>Email</th>
+                 <th>Loaction</th>
+                 <th>Major ID</th>
                  <th colspan="2">Action</th>
               </tr>
            </thead>
            <tbody id="stu-crud">
               @foreach($posts as $post)
               <tr id="post_id_{{ $post->id }}">
-                 <td>{{ $post->StudentName }}</td>
-                 <td>{{ $post->Gender }}</td>
-                 <td>{{ $post->Email }}</td>
+                 <td>{{ $post->name }}</td>
+                 <td>{{ $post->location }}</td>
+                 <td>{{ $post->major_id }}</td>
                  <td><a href="javascript:void(0)" id="edit-post" data-id="{{ $post->id }}" 
                  class="btn btn-info">Edit</a>
                  
@@ -58,7 +58,7 @@
     </div>
     <div class="modal-body">
         <form  id="stuForm" name="stuForm" class="form-horizontal">
-           <input type="hidden" name="post_id" id="post_id">
+           <input type="hidden" name="post_id" id="post_id" >
             <div class="form-group">
                 <label for="name" class="col-sm-2 control-label">Name</label>
                 <div class="col-sm-12">
@@ -66,21 +66,28 @@
                     value="" required="">
                 </div>
             </div>
-            <div class="form-group">
-                <label for="name" class="col-sm-2 control-label">Gender</label>
-                <select class="form-select" aria-label="Default select example" id="gender" 
-                name="gender" value="" required="">
-                <option selected>Open this select menu</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                </select>
+           
+            <div class="form-group select-form">
+                <div class="col-sm-6">
+                <?php
+                        $major = (\App\Models\Major::all());
+                ?>
+                    <select class="form-select" aria-label="Default select example"         
+                    name="major_only" id="major">
+                    <option value="" selected>Select Major</option>
+                    @foreach ($major as $m)
+                    <option value="{{$m->id}}">{{$m->major}}</option>
+                    @endforeach
+                    
+                    </select>
+                </div>
             </div>
             
-            <div class="form-group">
-                <label for="name" class="col-sm-2 control-label">Email</label>
-                <div class="col-sm-12">
-                    <input type="email" class="form-control" id="email" name="email" 
-                    value="" required="">
+            
+            <div class="form-group stu-group">
+                <div class="col-sm-6">
+                    <input type="text" name="local" id="local" 
+                    class="form-control" placeholder="Loaction" value="" required="">
                 </div>
             </div>
             
@@ -121,9 +128,11 @@
             $('#btn-save').val("edit-post");
             $('#ajax-crud-modal').modal('show');
             $('#post_id').val(data.id);
-            $('#name').val(data.StudentName);
-            $('#gender').val(data.Gender);
-            $('#email').val(data.Email);
+            $('#name').val(data.name);
+            $('#local').val(data.location);
+            $('#major').val(data.major_id);
+            
+           
         });
     });
    //Delete
@@ -145,21 +154,20 @@
 
     if ($("#stuForm").length > 0) {
         $("#stuForm").validate({
-    
         submitHandler: function(form) {
         var actionType = $('#btn-save').val();
         $('#btn-save').html('Sending..');
-        
+        console.log('Ha');
         $.ajax({
             data: $('#stuForm').serialize(),
             url: "{{ url('api/data')}}",
             type: "POST",
             dataType: 'json',
             success: function (data) {
+                
                 var post = '<tr id="post_id_' + data.id + '"><td style="display: none;">' 
                 + data.id + '</td><td>'+
-                data.StudentName + '</td><td>' + data.Gender + '</td><td>' + data.Email + 
-                '</td>';
+                data.name + '</td><td>' + data.location + '</td><td>'+ data.major_id+'</td>';
                 post += '<td><a href="javascript:void(0)" id="edit-post" data-id="' + data.
                 id 
                 + '" class="btn btn-info">Edit</a>';

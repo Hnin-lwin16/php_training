@@ -252,7 +252,7 @@ tbody td {
 }
 
 .list {
-  width: 80%;
+  width: 90%;
 }
 
 .list-table tbody tr:hover {
@@ -308,14 +308,21 @@ nav{
   border-color: #f2cfcf;
   border-radius: 5px;
   text-decoration: none;
+  margin-left: 10px;
 }
 .s-link{
   background-color: #f2cfcf;
   color: #424242;
   border-color: #f2cfcf;
   border-radius: 5px;
+  margin-left: 10px;
+}
+.r-form{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 .r-form input{
-  width: 210px;
-  margin-left: 10px;
+  width: 170px;
+  margin-left: 30px;
 }

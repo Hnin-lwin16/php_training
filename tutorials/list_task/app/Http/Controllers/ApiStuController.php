@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Services\ApiStu\ApiServiceInterface;
 use Illuminate\Http\Request;
-use App\Models\ApiStudent;
+use App\Models\Student;
 
 class ApiStuController extends Controller
 {
@@ -20,7 +20,7 @@ class ApiStuController extends Controller
      */
     public function index()
     {
-        $data['posts'] = ApiStudent::orderBy('id','desc')->paginate(8);
+        $data['posts'] = Student::orderBy('id','desc')->paginate(8);
         return view('Apilayout.student',$data);
     }
 
@@ -32,12 +32,12 @@ class ApiStuController extends Controller
      */
     public function store(Request $request)
     { 
-        $post =  ApiStudent::updateOrCreate([
+        $post =  Student::updateOrCreate([
             'id'=> $request-> post_id],
             [
-            'StudentName' => $request->name,
-            'Gender' => $request->gender,
-            'Email' => $request->email,
+            'name' => $request->name,
+            'location' => $request->local,
+            'major_id' => $request->major_only,
         ]);
         return response()->json($post,200);
     }
@@ -50,7 +50,7 @@ class ApiStuController extends Controller
      */
     public function show($id)
     {
-        $post = ApiStudent::find($id);
+        $post = Student::find($id);
         return response()->json($post,200);
     }
 
