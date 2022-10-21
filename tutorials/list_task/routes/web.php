@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\MajorController;
+use App\Http\Controllers\RegistController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,5 +41,9 @@ Route::post('/student/list',[StudentController::class,'import'])->name("student.
 
 Route::get('/search',[StudentController::class,'search'])->name("search");
 
+Auth::routes([
+    'verify' => true
+]);
 
+Route::get('/home',[StudentController::class,'list'])->name('home')->middleware('verified');
 

@@ -326,3 +326,31 @@ nav{
   width: 170px;
   margin-left: 30px;
 }
+.navbar{
+  width: 100%;
+}
+.auth{
+  border: 0;
+}
+.auth a{
+  margin-top: 10px;
+  width: 250px;
+  background-color: #ffffff;
+  border: 0;
+  margin-left: 0;
+}
+.reset{
+  border: 0;
+}
+.reset button{
+  padding: 10px;
+  width: 200px;
+}
+.email{
+  border: 0;
+}
+.email button{
+  display: inline-block;
+  width: 300px;
+  padding: 5px;
+}
